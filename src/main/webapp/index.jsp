@@ -17,10 +17,16 @@
 <a href="basic/02_sec.html">02_sec.html</a>
 <a href="basic/03_lifeCycle.jsp">03_lifeCycle</a>
 <a href="basic/04_diary.jsp">04_diary</a>
+<a href="basic/05_out.jsp">05_out</a>
 <h2>request</h2>
 <a href="req/aaa.jsp?pid=<%=pid %>&no=1234&marriage=true">aaa</a>
 <a href="req/joinForm.jsp">joinForm</a>
 <a href="req/testScore.jsp">testScore</a>
 <a href="req/examForm.jsp">examForm</a>
+<h2>response</h2>
+<a href="response/aaa.jsp">aaa</a>
+<a href="response/ccc.jsp">ccc</a>
+<a href="response/movieForm.jsp">movieForm</a>
+<a href="response/ageForm.jsp">ageForm</a>
 </body>
 </html>
