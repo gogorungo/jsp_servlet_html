@@ -3,7 +3,7 @@ package bas;
 import javax.servlet.http.HttpServletRequest;
 
 public class MemberDTO {
-	String pid;
+	String pid, pname;
 	int no;
 	boolean marriage;
 	
@@ -15,8 +15,35 @@ public class MemberDTO {
 		}
 	}
 	
+	public MemberDTO(){
+		
+	}
+	
+	public MemberDTO(String pid, int no, boolean marriage) {
+		super();
+		this.pid = pid;
+		this.no = no;
+		this.marriage = marriage;
+	}
+	
+
+
+	public MemberDTO(String pid, String pname) {
+		super();
+		this.pid = pid;
+		this.pname = pname;
+	}
+
 	public String getPid() {
 		return pid;
+	}
+	
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
 	
 	public void setPid(String pid) {

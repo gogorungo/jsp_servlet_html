@@ -23,10 +23,25 @@
 <a href="req/joinForm.jsp">joinForm</a>
 <a href="req/testScore.jsp">testScore</a>
 <a href="req/examForm.jsp">examForm</a>
+
 <h2>response</h2>
 <a href="response/aaa.jsp">aaa</a>
 <a href="response/ccc.jsp">ccc</a>
 <a href="response/movieForm.jsp">movieForm</a>
 <a href="response/ageForm.jsp">ageForm</a>
+
+<h2>application</h2>
+<a href="application/info.jsp">info</a>
+<a href="application/set1.jsp">set1</a>
+<a href="application/get.jsp">get</a>
+<a href="application/set2.jsp">set2</a>
+<a href="application/remove.jsp">remove</a>
+<a href="application/login/main.jsp">로그인</a>
+
+<h2>inc</h2>
+<a href="inc/big.jsp?pid=zzz&marriage=true">include</a>
+<a href="inc/home.jsp">home</a>
+<a href="inc/bbang.jsp">빵집</a>
+<a href="inc/big2.jsp?pid=qwer&marriage=false">include디렉티브</a>
 </body>
 </html>
