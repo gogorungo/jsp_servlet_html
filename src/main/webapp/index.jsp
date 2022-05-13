@@ -43,5 +43,9 @@
 <a href="inc/home.jsp">home</a>
 <a href="inc/bbang.jsp">빵집</a>
 <a href="inc/big2.jsp?pid=qwer&marriage=false">include디렉티브</a>
+
+<h2>forward</h2>
+<a href="forward/aaa.jsp?pid=qaz&age=27&marriage=1">aaa</a>
+<a href="forward/member.jsp">member</a>
 </body>
 </html>

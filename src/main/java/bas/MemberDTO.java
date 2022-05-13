@@ -1,11 +1,15 @@
 package bas;
 
+
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 public class MemberDTO {
 	String pid, pname;
-	int no;
+	int no, age;
 	boolean marriage;
+	Date reg_date;
 	
 	public void init(HttpServletRequest request) {
 		pid = request.getParameter("pid");
@@ -68,15 +72,38 @@ public class MemberDTO {
 		return marriage;
 	}
 	
-	public void setMarriage(boolean marriage) {
-		this.marriage = marriage;
+	public void setMarriage(int marriage) {
+		// 삼항연산자
+		this.marriage = marriage == 1;
+		
 	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public Date getReg_date() {
+		return reg_date;
+	}
+
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
+	}
+	
 	
 	
 	@Override
 	public String toString() {
-		return "MemberDTO [pid=" + pid + ", no=" + no + ", marriage=" + marriage + "]";
+		return "MemberDTO [pid=" + pid + ", pname=" + pname + ", no=" + no + ", age=" + age + ", marriage=" + marriage
+				+ ", reg_date=" + reg_date + "]";
 	}
+
+
+	
 	
 	
 	
