@@ -1,4 +1,5 @@
-<%@page import="bas.MemberDTO"%>
+
+<%@page import="jdbc_p.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,22 +11,10 @@
 <body>
 <h1>메인 페이지입니다</h1>
 <%
-
-	String perName = null, pid = null;
-
-	for(Cookie coo: request.getCookies() ){
-		if(coo.getName().equals("pName")){
-			perName = coo.getValue();
-		}
-		if(coo.getName().equals("pid")){
-			pid = coo.getValue();
-		}
-	}
-
-	if(perName!=null){
-		MemberDTO dto = (MemberDTO) application.getAttribute("inUser");
+	if(session.getAttribute("inUser")!=null){
+		MemberDTO dto = (MemberDTO) session.getAttribute("inUser");
 %>
-	<%=perName %>님 안녕하세요
+	<%=dto.getPname() %>님 안녕하세요
 	<a href="logout.jsp">로그아웃</a>
 <%
 	}else{

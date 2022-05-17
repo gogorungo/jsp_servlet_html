@@ -58,8 +58,20 @@
 <h2>Cookie</h2>
 <a href="cookie/set1.jsp">set1</a>
 <a href="cookie/view.jsp">view</a>
-<a href="cookie/set2.jsp">set2</a>
-<a href="cookie/delete.jsp">delete</a>
-<a href="cookie/login/main.jsp">로그인</a>
+
+<h2>session</h2>
+<a href="session/set1.jsp">set1</a>
+<a href="session/view.jsp">view</a>
+<a href="session/set2.jsp">set2</a>
+<a href="session/delete.jsp">delete</a>
+<a href="session/login/main.jsp">로그인</a>
+
+<h2>useBean</h2>
+<a href="useBean/bean.jsp?pid=qaz&age=27&marriage=true&tel=1234567">useBean</a>
+<a href="useBean/joinForm.jsp">joinForm</a>
+
+<h2>dbcp</h2>
+<a href="dbcp/memberList.jsp">dbcp</a>
+
 </body>
 </html>

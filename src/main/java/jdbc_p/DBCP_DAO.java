@@ -10,7 +10,11 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class MemberDAO {
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+public class DBCP_DAO {
 
 	Connection con;
 	// Statement stmt; // 보안상 문제가 있다
@@ -18,16 +22,14 @@ public class MemberDAO {
 	ResultSet rs;
 	String sql;
 
-	public MemberDAO() {
+	public DBCP_DAO() {
 		// 커넥터에서 사용하는 주소
-		String url = "jdbc:mariadb://localhost:3306/comstudy21";
-		String username = "user21";
-		String password = "1234";
 
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-
-			con = DriverManager.getConnection(url, username, password);
+			
+			Context context = new InitialContext();
+			DataSource ds = (DataSource)context.lookup("java:comp/env/qazxsw");
+			con = ds.getConnection();
 
 			// stmt = con.createStatement();
 
