@@ -119,6 +119,11 @@ public class MemberDTO {
 		this.reg_date = reg_date;
 	}
 
+	
+	public String getNickname() {
+		return "김강규만세";
+	}
+	
 	@Override
 	public String toString() {
 		return "MemberDTO [pid=" + pid + ", pname=" + pname + ", pw=" + pw + ", no=" + no + ", age=" + age + ", tel="
