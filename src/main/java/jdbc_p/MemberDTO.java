@@ -37,7 +37,18 @@ public class MemberDTO {
 		this.pname = pname;
 	}
 	
+	
+	
 
+
+	public MemberDTO(String pid, String pname, int age, boolean marriage, Date reg_date) {
+		super();
+		this.pid = pid;
+		this.pname = pname;
+		this.age = age;
+		this.marriage = marriage;
+		this.reg_date = reg_date;
+	}
 
 	public String getPw() {
 		return pw;

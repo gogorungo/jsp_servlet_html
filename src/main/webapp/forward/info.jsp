@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 
 <% 
-	request.setAttribute("main", "info");
+	//request.setAttribute("main", "info");
+	request.setAttribute("main", "cart");
 %>
 
-<jsp:forward page="view/template.jsp" />
+<jsp:forward page="../view/template.jsp" />

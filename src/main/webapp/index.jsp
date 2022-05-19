@@ -77,5 +77,7 @@
 <a href="jstl/el.jsp?pid=qaz&age=27&marriage=true&tel=1234567">el</a>
 <a href="jstl/el2.jsp?pid=asdf&kor=78&eng=79&mat=72">02_exam</a>
 <a href="jstl/set_if.jsp">set_if</a>
+<a href="jstl/foreach.jsp">foreach</a>
+<a href="jstl/memberList.jsp">memberList</a>
 </body>
 </html>
