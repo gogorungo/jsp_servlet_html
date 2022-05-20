@@ -111,6 +111,41 @@ public class MemberDAO {
 
 		return res;
 	}
+	
+	public int insert2(MemberDTO dto) {
+		int res = 0;
+
+		sql = "INSERT INTO member (pid, pname, pw, age, marriage, reg_date, pic, myff) VALUES " 
+		+ "(?,?,?,?,?,?,?,?)";
+
+		System.out.println(sql);
+		try {
+
+			stmt = con.prepareStatement(sql);
+
+			stmt.setString(1, dto.pid);
+			stmt.setString(2, dto.pname);
+			stmt.setString(3, dto.pw);
+			stmt.setInt(4, dto.age);
+			stmt.setInt(5, dto.getMarriageInt());
+			stmt.setString(7, dto.pic);
+			stmt.setString(8, dto.myff);
+			
+			Date date = new Date();
+			Object oDate = new Timestamp(date.getTime());
+			stmt.setObject(6, oDate);
+
+			res = stmt.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return res;
+	}
 
 	public MemberDTO detail(MemberDTO dto) {
 		MemberDTO res = null;

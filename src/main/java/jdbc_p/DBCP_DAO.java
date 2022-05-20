@@ -150,6 +150,42 @@ public class DBCP_DAO {
 
 		return res;
 	}
+	
+	public MemberDTO detail_one(MemberDTO dto) {
+		MemberDTO res = null;
+		// 보안상 문제가 있다
+		// sql = "SELECT * FROM member WHERE pid = '"+dto.pid+"' and pw = '"+dto.pw+"'";
+
+		sql = "SELECT * FROM member WHERE pid = ?";
+
+		try {
+			stmt = con.prepareStatement(sql);
+
+			// value 만 된다. 구조는 넣을 수 없다 (테이블명, 필드명 등으로 대체 불가)
+			// 시큐어 코딩 (보안코딩)
+			stmt.setString(1, dto.pid);
+
+			rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				res = new MemberDTO();
+				res.setPid(rs.getString("pid"));
+				res.setPname(rs.getString("pname"));
+				res.setAge(rs.getInt("age"));
+				res.setMarriage(rs.getInt("marriage"));
+				// date로 가져오면 데이터가 사라진다
+				res.setReg_date(rs.getTimestamp("reg_date"));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return res;
+	}
 
 	public void close() {
 		if (rs != null) {

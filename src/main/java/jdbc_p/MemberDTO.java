@@ -6,7 +6,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 public class MemberDTO {
-	String pid, pname, pw, tel;
+	String pid, pname, pw, tel, myff, pic;
 	int no, age;
 	boolean marriage;
 	Date reg_date;
@@ -20,7 +20,7 @@ public class MemberDTO {
 	}
 	
 	public MemberDTO(){
-		System.out.println("MemberDTO 기본 생성자 실행");
+//		System.out.println("MemberDTO 기본 생성자 실행");
 	}
 	
 	public MemberDTO(String pid, int no, boolean marriage) {
@@ -30,6 +30,22 @@ public class MemberDTO {
 		this.marriage = marriage;
 	}
 	
+	public String getMyff() {
+		return myff;
+	}
+
+	public void setMyff(String myff) {
+		this.myff = myff;
+	}
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
 	public MemberDTO(String pid, String pw, String pname) {
 		super();
 		this.pid = pid;
@@ -38,9 +54,6 @@ public class MemberDTO {
 	}
 	
 	
-	
-
-
 	public MemberDTO(String pid, String pname, int age, boolean marriage, Date reg_date) {
 		super();
 		this.pid = pid;
@@ -134,11 +147,14 @@ public class MemberDTO {
 	public String getNickname() {
 		return "김강규만세";
 	}
-	
+
 	@Override
 	public String toString() {
-		return "MemberDTO [pid=" + pid + ", pname=" + pname + ", pw=" + pw + ", no=" + no + ", age=" + age + ", tel="
-				+ tel + ", marriage=" + marriage + ", reg_date=" + reg_date + "]";
+		return "MemberDTO [pid=" + pid + ", pname=" + pname + ", pw=" + pw + ", tel=" + tel + ", myff=" + myff
+				+ ", pic=" + pic + ", no=" + no + ", age=" + age + ", marriage=" + marriage + ", reg_date=" + reg_date
+				+ "]";
 	}
+	
+
 	
 }
