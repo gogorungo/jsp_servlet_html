@@ -84,5 +84,15 @@
 <h2>file</h2>
 <a href="file/uploadForm.jsp">uploadForm</a>
 <a href="file/joinForm.jsp">joinForm</a>
+<a href="file/fileDown.jsp">fileDown</a>
+<%-- <a href="file/fileDown2.jsp?fName=<%=URLEncoder.encode("이력서.docx","UTF-8") %>">이력서</a> --%>
+<a href="file/fileDown2.jsp?fName=이력서.docx">이력서</a>
+<a href="file/fileDown2.jsp?fName=bg.jpg">배경그림</a>
+<a href="file/fileDown2.jsp?fName=BigBuck.mp4">영상</a>
+
+<h2>file</h2>
+<h2><a href="board/list">게시판</a></h2>
+
+
 </body>
 </html>
