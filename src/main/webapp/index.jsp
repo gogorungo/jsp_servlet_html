@@ -91,7 +91,7 @@
 <a href="file/fileDown2.jsp?fName=BigBuck.mp4">영상</a>
 
 <h2>file</h2>
-<h2><a href="board/list">게시판</a></h2>
+<h2><a href="board/List">게시판</a></h2>
 
 
 </body>

@@ -31,20 +31,33 @@ public class F_Controller extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		System.out.println(request.getRequestURI());
-		System.out.println(request.getContextPath());
+		//System.out.println(request.getRequestURI());
+		//System.out.println(request.getContextPath());
 		
 		String serviceStr = request.getRequestURI().substring(
 				(request.getContextPath()+"/board/").length()
 				);
 		
-		System.out.println(serviceStr);
+		//System.out.println(serviceStr);
 		
-		request.setAttribute("mainUrl", serviceStr);
+		// 객체를 생성해서 넘긴다. 클래스명이 없을 수 있으므로 try/catch 사용
+		try {
+			BoardService service = 
+					(BoardService) Class.forName("board_p.service_p.Board"+serviceStr)
+					.newInstance();
+			service.execute(request, response);
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		
 		
 		
-		System.out.println("doGet() 들어옴");
+		
+		
+		//System.out.println("doGet() 들어옴");
 		// 포워딩의 액션태그 기능을 쓰기위한 사전작업 앞에 / 안붙이면 무한루프돌음
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/bbb_view/template.jsp");
 		
