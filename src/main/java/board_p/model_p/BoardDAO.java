@@ -106,8 +106,71 @@ public class BoardDAO {
 		}
 	}
 	
+	public void insert(BoardDTO dto){
+		sql = "insert into board (title, pname, pw, content, upfile, cnt, reg_date) values "
+				+ "(?, ?, ?, ?, ?, 0, sysdate())";
+		
+		try {
+			ptmt = con.prepareStatement(sql);
+			ptmt.setString(1, dto.title);
+			ptmt.setString(2, dto.pname);
+			ptmt.setString(3, dto.pw);
+			ptmt.setString(4, dto.content);
+			ptmt.setString(5, dto.upfile);
+			
+			ptmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
 	
+	public int modify(BoardDTO dto){
+		
+		int res = 0;
+		sql = "update board set title = ?, pname = ?, content = ? where id =? and pw = ? ";
+		
+		try {
+			ptmt = con.prepareStatement(sql);
+			ptmt.setString(1, dto.title);
+			ptmt.setString(2, dto.pname);
+			ptmt.setString(3, dto.content);
+			ptmt.setInt(4, dto.id);
+			ptmt.setString(5, dto.pw);
+			
+			// 실행된 갯수만
+			res = ptmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return res;
+	}
 	
+	public int delete (BoardDTO dto){
+		
+		int res = 0;
+		sql = "delete from board where id = ? and pw = ?";
+		
+		try {
+			ptmt = con.prepareStatement(sql);
+			ptmt.setInt(1, dto.id);
+			ptmt.setString(2, dto.pw);
+			
+			// 실행된 갯수만
+			res = ptmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return res;
+	}
 	
 	public void close() {
 		if (rs != null) {

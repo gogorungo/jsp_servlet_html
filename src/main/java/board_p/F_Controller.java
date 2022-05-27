@@ -1,6 +1,7 @@
 package board_p;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,9 +20,17 @@ public class F_Controller extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
+	ArrayList<String> nonClass;
+	
+	
+	
     public F_Controller() {
+    	// 상속을 받았기 때문에 super 필수
         super();
-        // TODO Auto-generated constructor stub
+        nonClass = new ArrayList<String>();
+        nonClass.add("InsertForm");
+        nonClass.add("DeleteForm");
     }
 
 	/**
@@ -40,22 +49,22 @@ public class F_Controller extends HttpServlet {
 		
 		//System.out.println(serviceStr);
 		
-		// 객체를 생성해서 넘긴다. 클래스명이 없을 수 있으므로 try/catch 사용
-		try {
-			BoardService service = 
-					(BoardService) Class.forName("board_p.service_p.Board"+serviceStr)
-					.newInstance();
-			service.execute(request, response);
-			
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		
-		
-		
-		
+		if(nonClass.contains(serviceStr)) {
+			request.setAttribute("mainUrl", serviceStr);
+		}else {
+			// 객체를 생성해서 넘긴다. 클래스명이 없을 수 있으므로 try/catch 사용
+			try {
+				BoardService service = 
+						(BoardService) Class.forName("board_p.service_p.Board"+serviceStr)
+						.newInstance();
+				service.execute(request, response);
+				
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		}
 		
 		//System.out.println("doGet() 들어옴");
 		// 포워딩의 액션태그 기능을 쓰기위한 사전작업 앞에 / 안붙이면 무한루프돌음
