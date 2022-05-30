@@ -1,5 +1,6 @@
 package board_p.service_p;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
@@ -26,16 +27,28 @@ public class BoardDeleteReg implements BoardService{
 		}
 		
 		BoardDTO dto = new BoardDTO();
-		dto.setId(Integer.parseInt(request.getParameter("id")));
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		dto.setId(id);
 		dto.setPw(request.getParameter("pw"));
+		
+		BoardDTO delDTO = new BoardDAO().detail(id);
 		
 		int res = new BoardDAO().delete(dto);
 		
 		String msg = "삭제실패", goUrl = "DeleteForm?id="+dto.getId();
 		
 		if(res>0) {
+			
 			msg = "삭제성공";
 			goUrl = "List";
+			System.out.println(msg+":"+delDTO.getUpfile());
+			if(delDTO.getUpfile()!=null) {
+				String path = request.getRealPath("bbb_fff");
+				path = "C:\\Users\\satae\\jsp_work\\jspProj\\src\\main\\webapp\\bbb_fff";
+				
+				new File(path+"\\"+delDTO.getUpfile()).delete();
+			}
 		}
 		
 		request.setAttribute("msg", msg);

@@ -27,12 +27,14 @@ public class BoardDAO {
 	}
 	
 	// 리미트를 정해서 가져와야한다
-	public ArrayList<BoardDTO> list(){
+	public ArrayList<BoardDTO> list(int start, int limit){
 		ArrayList<BoardDTO> res = new ArrayList<BoardDTO>();
-		sql = "select * from board";
+		sql = "select * from board order by id desc limit ?, ?";
 		
 		try {
 			ptmt = con.prepareStatement(sql);
+			ptmt.setInt(1,  start);
+			ptmt.setInt(2,  limit);
 			
 			rs = ptmt.executeQuery();
 			
@@ -90,6 +92,24 @@ public class BoardDAO {
 		}
 		
 		return dto;
+	}
+	
+	public int totalCnt(){
+		sql = "select count(*) from board";
+		
+		try {
+			ptmt = con.prepareStatement(sql);
+			
+			rs = ptmt.executeQuery();
+			
+			rs.next();
+			
+			return rs.getInt(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 	
 	public void addCount(int id){

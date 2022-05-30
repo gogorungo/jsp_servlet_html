@@ -31,6 +31,7 @@ public class F_Controller extends HttpServlet {
         nonClass = new ArrayList<String>();
         nonClass.add("InsertForm");
         nonClass.add("DeleteForm");
+     //   nonClass.add("FileDown");
     }
 
 	/**
@@ -49,6 +50,13 @@ public class F_Controller extends HttpServlet {
 		
 		//System.out.println(serviceStr);
 		
+		int page = 1;
+		if(request.getParameter("page")!=null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		
+		request.setAttribute("nowPage", page);
+		
 		if(nonClass.contains(serviceStr)) {
 			request.setAttribute("mainUrl", serviceStr);
 		}else {
@@ -66,14 +74,13 @@ public class F_Controller extends HttpServlet {
 			} 
 		}
 		
-		//System.out.println("doGet() 들어옴");
-		// 포워딩의 액션태그 기능을 쓰기위한 사전작업 앞에 / 안붙이면 무한루프돌음
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/bbb_view/template.jsp");
 		
-		dispatcher.forward(request, response);
-		
-		
-		
+		if(!serviceStr.equals("FileDown")) {
+			//System.out.println("doGet() 들어옴");
+			// 포워딩의 액션태그 기능을 쓰기위한 사전작업 앞에 / 안붙이면 무한루프돌음
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/bbb_view/template.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**
